@@ -4,6 +4,14 @@
 ## Description
 This project is a very simple ReactJS bar allowing a user to easily send feedbacks/bugs. It could be useful for developpers working on a React application project, wanting to gather a client feedbacks/bugs easily, by email with some information to debug (message describing the bug, screenshot with annotation, Redux store state if possible).
 
+## Demo
+
+### React application with bug reporter bar
+![React application demo](https://github.com/haroal/simple-bug-reporter/raw/master/gif/simple-bug-reporter_client.gif)
+
+### Mail received containing the report
+![Mail with report](https://github.com/haroal/simple-bug-reporter/raw/master/gif/simple-bug-reporter_mail.gif)
+
 ## Installation
 
 This package needs 2 parts : the client part, which is a React component to add to your React application, and a server part which will store feedbacks/bugs into a MongoDB database and send them by email.
