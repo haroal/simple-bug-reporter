@@ -1,0 +1,63 @@
+{
+  "name": "simple-bug-reporter",
+  "version": "1.0.0",
+  "description": "Simple ReactJS bar allowing a user to easily send feedbacks/bugs.",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/haroal/simple-bug-reporter.git"
+  },
+  "keywords": [
+    "bar",
+    "bug",
+    "report",
+    "simple",
+    "screenshot",
+    "redux",
+    "react]"
+  ],
+  "author": "Alexis ANNEIX <alexis.anneix@supelec.fr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/haroal/simple-bug-reporter/issues"
+  },
+  "homepage": "https://github.com/haroal/simple-bug-reporter#readme",
+  "peerDependencies": {
+    "react": "^16.2.0"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.2.5",
+    "axios": "^0.17.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-regenerator-runtime": "^6.5.0",
+    "classnames": "^2.2.5",
+    "css-loader": "^0.28.9",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "html2canvas": "^1.0.0-alpha.9",
+    "postcss-flexbugs-fixes": "^3.3.0",
+    "postcss-loader": "^2.1.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "style-loader": "^0.20.1"
+  }
+}

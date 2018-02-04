@@ -1,0 +1,23 @@
+{
+  "name": "simple-bug-reporter/server",
+  "version": "1.0.0",
+  "description": "Simple bug reporter server to receive feedbacks and send mails",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/haroal/simple-bug-reporter.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Alexis ANNEIX <alexis.anneix@supelec.fr>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "helmet": "^3.9.0",
+    "mongoose": "^5.0.1",
+    "nodemailer": "^4.4.2"
+  }
+}
