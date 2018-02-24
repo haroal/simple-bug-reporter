@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import html2canvas from 'html2canvas';
 import axios from 'axios';
 
+import translations from './translations.json';
 import './bug-reporter.css';
 
 class BugReporter extends React.Component {
@@ -56,6 +57,14 @@ class BugReporter extends React.Component {
     });
   }
 
+  translate(name) {
+    if (translations[this.props.lang] === undefined) {
+      return translations['en'][name];
+    }
+
+    return translations[this.props.lang][name];
+  }
+
   async submit() {
     const { message, element } = this.state;
     let dataScreenshot;
@@ -87,11 +96,11 @@ class BugReporter extends React.Component {
         reduxStore
       });
 
-      alert('Rapport envoyé.');
+      alert(this.translate('report_sent'));
 
     } catch (err) {
       console.error(err);
-      alert("Une erreur est survenue lors de l'envoi du rapport de bug.");
+      alert(this.translate('error_sending'));
     }
 
     this.setState({
@@ -143,7 +152,7 @@ class BugReporter extends React.Component {
             onChange={this.onScreenshotCheck}
           />
           <label htmlFor="screenshot">
-            Inclure une capture d&apos;écran
+            {this.translate('screenshot_button')}
           </label>
         </div>
 
@@ -153,7 +162,7 @@ class BugReporter extends React.Component {
             disabled={this.state.message === '' || !this.state.screenshotChecked}
             onClick={this.setSelectElementMode}
           >
-            { this.state.element ? "Modifier l'élément" : 'Indiquer un élément' }
+            { this.state.element ? this.translate('set_element_button') : this.translate('select_element_button') }
           </button>
         </div>
 
@@ -164,7 +173,7 @@ class BugReporter extends React.Component {
               disabled={this.state.message === ''}
               onClick={this.submit}
             >
-              Envoyer
+              {this.translate('send_button')}
             </button>
           </div>
 
@@ -173,7 +182,7 @@ class BugReporter extends React.Component {
               type="button"
               onClick={this.cancel}
             >
-              Annuler
+              {this.translate('cancel_button')}
             </button>
           </div>
         </div>
@@ -184,7 +193,7 @@ class BugReporter extends React.Component {
           role="presentation"
         >
           <div className="overlay-text">
-            Cliquer sur l&apos;élément
+            {this.translate('select_element_message')}
           </div>
         </div>
       </div>
