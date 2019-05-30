@@ -58,7 +58,7 @@ class BugReporter extends React.Component {
 
   translate(name) {
     if (translations[this.props.lang] === undefined) {
-      return translations['en'][name];
+      return translations.en[name];
     }
 
     return translations[this.props.lang][name];
@@ -127,27 +127,28 @@ class BugReporter extends React.Component {
         </div>
 
         <div className="field-group message-input">
-          <label htmlFor="message">Message</label>
-          <textarea
-            type="text"
-            id="message"
-            name="message"
-            rows="1"
-            value={this.state.message}
-            onChange={this.onMessageChange}
-          />
+          <label htmlFor="message">
+            Message
+            <textarea
+              id="message"
+              name="message"
+              rows="1"
+              value={this.state.message}
+              onChange={this.onMessageChange}
+            />
+          </label>
         </div>
 
         <div className="field-group screenshot-input">
-          <input
-            type="checkbox"
-            id="screenshot"
-            name="screenshot"
-            disabled={this.state.message === ''}
-            checked={this.state.screenshotChecked}
-            onChange={this.onScreenshotCheck}
-          />
           <label htmlFor="screenshot">
+            <input
+              type="checkbox"
+              id="screenshot"
+              name="screenshot"
+              disabled={this.state.message === ''}
+              checked={this.state.screenshotChecked}
+              onChange={this.onScreenshotCheck}
+            />
             {this.translate('screenshot_button')}
           </label>
         </div>
