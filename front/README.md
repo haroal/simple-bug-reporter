@@ -2,7 +2,9 @@
 *Developped by Alexis ANNEIX on January 2018*
 
 ## Description
-This project is a very simple ReactJS bar allowing a user to easily send feedbacks/bugs. It could be useful for developpers working on a React application project, wanting to gather a client feedbacks/bugs easily, by email with some information to debug (message describing the bug, screenshot with annotation, Redux store state if possible).
+This project is a very simple ReactJS bar allowing a user to easily send feedbacks/bugs. It could be useful for
+developpers working on a React application project, wanting to gather a client feedbacks/bugs easily, by email with some
+information to debug (message describing the bug, screenshot with annotation, variables).
 It is now available in two languages : French and English.
 
 ## Demo
@@ -15,7 +17,8 @@ It is now available in two languages : French and English.
 
 ## Installation
 
-This package needs 2 parts : the client part, which is a React component to add to your React application, and a server part which will store feedbacks/bugs into a MongoDB database and send them by email.
+This package needs 2 parts : the client part, which is a React component to add to your React application, and a server
+part which will store feedbacks/bugs into a MongoDB database and send them by email.
 
 To install the React component for the client part : 
 ```bash
@@ -45,9 +48,6 @@ https://nodemailer.com/usage/using-gmail/)
 
 ## Usage
 
-There is two different React components : a classical one (*BugReporter*)and a Redux one (*BugReporterRedux*). If you are using Redux into your application, I recommend you to use the Redux component to add the Redux store state in the report.
-
-### Classical
 ```javascript
 import React, { Component } from 'react';
 import logo from './logo.svg';
@@ -65,41 +65,13 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <BugReporter name="test" serverURL="http://localhost:4000/" />
+        <BugReporter name="test" serverURL="http://localhost:4000/" data={{ "store": {}, "props": this.props, "state": {} }} />
       </div>
     );
   }
 }
 
 export default App;
-```
-
-### Redux
-```javascript
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import logo from './logo.svg';
-import './App.css';
-import { BugReporterRedux } from 'simple-bug-reporter';
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <BugReporterRedux name="test" serverURL="http://localhost:4000/" />
-      </div>
-    );
-  }
-}
-
-export default connect()(App);
 ```
 
 ## Props
@@ -114,6 +86,8 @@ export default connect()(App);
 
 - **dev** (default: true) : boolean indicating if you are in dev mode. Set to false to hide the simple-bug-reporter bar.
 
-- NEW: **lang** (default: 'en') : string indicating the language to use ('en' for English or 'fr' for French)
+- **lang** (default: 'en') : string indicating the language to use ('en' for English or 'fr' for French)
 
 - **screenshotQuality** (default: 0.6) : quality of the JPEG screenshot (between 0 and 1, higher is better quality but increase size)
+
+- NEW: **data** (default: {}) : any data object that you want to send with the report (ie. the Redux store or the component props)
