@@ -1,5 +1,9 @@
 # simple-bug-reporter
 
+## 1.1.1
+
+- Update README.md
+
 ## 1.1.0
 
 - Add a "data" props to pass any object to write into the email report
