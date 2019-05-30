@@ -1,5 +1,9 @@
 # simple-bug-reporter
 
+## 1.1.2
+
+- Remove useless Redux dependencies
+
 ## 1.1.1
 
 - Update README.md
