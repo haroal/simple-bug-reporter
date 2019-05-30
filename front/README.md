@@ -1,5 +1,6 @@
 # Simple bug reporter
-*Developped by Alexis ANNEIX on January 2018*
+
+[![npm version](https://badge.fury.io/js/simple-bug-reporter.svg)](https://badge.fury.io/js/simple-bug-reporter)
 
 ## Description
 This project is a very simple ReactJS bar allowing a user to easily send feedbacks/bugs. It could be useful for
