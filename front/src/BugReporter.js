@@ -127,16 +127,14 @@ class BugReporter extends React.Component {
         </div>
 
         <div className="field-group message-input">
-          <label htmlFor="message">
-            Message
-            <textarea
-              id="message"
-              name="message"
-              rows="1"
-              value={this.state.message}
-              onChange={this.onMessageChange}
-            />
-          </label>
+          <label htmlFor="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="1"
+            value={this.state.message}
+            onChange={this.onMessageChange}
+          />
         </div>
 
         <div className="field-group screenshot-input">
