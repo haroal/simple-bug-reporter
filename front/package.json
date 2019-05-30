@@ -1,6 +1,6 @@
 {
   "name": "simple-bug-reporter",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple ReactJS bar allowing a user to easily send feedbacks/bugs.",
   "main": "build/index.js",
   "scripts": {
@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^7.2.5",
-    "axios": "^0.17.1",
+    "axios": "^0.18.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
