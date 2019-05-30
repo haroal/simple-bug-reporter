@@ -1,11 +1,16 @@
-bug-reporter:
-  build: .
-  command: node server.js
-  volumes:
-      - .:/usr/app
-      - /usr/app/node_modules
-  environment:
-      - MONGODB_URI=<mongodburi>
-      - MAIL_ADDRESS=<mail address to send report>
-  ports:
-    - "4000:4000"
+version: '3'
+
+services:
+  bug-reporter:
+    build: .
+    container_name: bug-reporter
+    command: npm start
+    volumes:
+        - .:/usr/app
+        - /usr/app/node_modules
+    ports:
+      - "4000:4000"
+
+  mongo:
+    container_name: db-bug-reporter
+    image: mongo

@@ -27,16 +27,21 @@ To run the server part :
 ```bash
 $ git clone git@github.com/haroal/simple-bug-reporter.git
 $ cd simple-bug-reporter/server
+$ cp .env.example .env
+# Fill your information into the .env file
 
-# Using docker (you have to enter params into the docker-compose.yml file)
+# Using docker
 $ docker-compose up
  
 # OR -----------------------------------------------
  
 # Without docker
 $ npm install
-$ MONGODB_URI=mongodb://localhost/bug-reporter MAIL_ADDRESS=receiver@email.com npm start
+$ npm start
 ```
+
+**WARNING**: If you use a Gmail to send the emails, be sure you have allowed third-party application to use it (cf
+https://nodemailer.com/usage/using-gmail/)
 
 ## Usage
 

@@ -1,14 +1,23 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
 
-if (!process.env.MONGODB_URI || !process.env.MAIL_ADDRESS) {
-  throw new Error('Missing environment variable(s) : MONGODB_URI and MAIL_ADDRESS must be defined.')
+if (!process.env.MONGODB_URI
+  || !process.env.RECEIVER_MAIL_ADDRESS
+  || !process.env.SENDER_MAIL_SMTP_SERVER
+  || !process.env.SENDER_MAIL_SMTP_PORT
+  || !process.env.SENDER_MAIL_SECURE
+  || !process.env.SENDER_MAIL_USER
+  || !process.env.SENDER_MAIL_PASSWORD) {
+  throw new Error('Missing environment variable(s).')
 }
 
-mongoose.connect(process.env.MONGODB_URI, (err) => {
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true }, (err) => {
   if (err) { throw err }
 })
 
@@ -44,10 +53,12 @@ const allowCrossDomain = (req, res, next) => {
 app.use(allowCrossDomain)
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: process.env.SENDER_MAIL_SMTP_SERVER,
+  port:  process.env.SENDER_MAIL_SMTP_PORT,
+  secureConnection: process.env.SENDER_MAIL_SECURE,
   auth: {
-    user: 'sender.email@gmail.com',
-    pass: 'password'
+    user: process.env.SENDER_MAIL_USER,
+    pass: process.env.SENDER_MAIL_PASSWORD
   }
 })
 
@@ -75,7 +86,7 @@ app.post('/', (req, res) => {
 
   const mailOptions = {
     from: 'bug-reporter@node.com',
-    to: process.env.MAIL_ADDRESS,
+    to: process.env.RECEIVER_MAIL_ADDRESS,
     subject: `${report.clientName} - Bug reported`,
     html: `
       <h3>Bug reported for "${report.clientName}"</h3>
