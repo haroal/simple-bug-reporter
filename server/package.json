@@ -1,6 +1,6 @@
 {
   "name": "simple-bug-reporter-server",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Simple bug reporter server to receive feedbacks and send mails",
   "main": "server.js",
   "repository": {

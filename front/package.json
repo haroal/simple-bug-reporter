@@ -1,6 +1,6 @@
 {
   "name": "simple-bug-reporter",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Simple ReactJS bar allowing a user to easily send feedbacks/bugs.",
   "main": "build/index.js",
   "scripts": {
