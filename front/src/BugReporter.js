@@ -89,7 +89,8 @@ class BugReporter extends React.Component {
       await axios.post(this.props.serverURL, {
         clientName: this.props.name,
         message,
-        screenshot: dataScreenshot
+        screenshot: dataScreenshot,
+        data: JSON.stringify(this.props.data)
       });
 
       alert(this.translate('report_sent'));
@@ -200,6 +201,7 @@ class BugReporter extends React.Component {
 BugReporter.defaultProps = {
   annotationColor: 'rgba(255, 0, 0, 0.7)',
   annotationRadius: 5,
+  data: {},
   dev: true,
   lang: 'en',
   screenshotQuality: 0.6
@@ -208,6 +210,7 @@ BugReporter.defaultProps = {
 BugReporter.propTypes = {
   annotationColor: PropTypes.string,
   annotationRadius: PropTypes.number,
+  data: PropTypes.object,
   dev: PropTypes.bool,
   lang: PropTypes.string,
   name: PropTypes.string.isRequired,

@@ -25,7 +25,7 @@ const reportSchema = new mongoose.Schema({
   clientName: String,
   message: String,
   screenshot: String,
-  reduxStore: String,
+  data: String,
   createdAt: { type: Date, default: Date.now }
 })
 
@@ -34,7 +34,7 @@ const ReportModel = mongoose.model('reports', reportSchema)
 const app = express()
 app.set('port', process.env.PORT || 4000)
 
-app.use(bodyParser.json({ limit: '5mb' }))
+app.use(bodyParser.json({ limit: '10mb' }))
 app.use(helmet())
 
 const allowCrossDomain = (req, res, next) => {
@@ -65,15 +65,12 @@ const transporter = nodemailer.createTransport({
 app.post('/', (req, res) => {
   const report = new ReportModel({
     clientName: req.body.clientName,
-    message: req.body.message
+    message: req.body.message,
+    data: req.body.data
   })
 
   if (req.body.screenshot) {
     report.screenshot = req.body.screenshot
-  }
-
-  if (req.body.reduxStore) {
-    report.reduxStore = req.body.reduxStore
   }
 
   report.save((err, savedReport) => {
@@ -91,8 +88,8 @@ app.post('/', (req, res) => {
     html: `
       <h3>Bug reported for "${report.clientName}"</h3>
       <p>Message: ${report.message}</p>
+      <p>Data : ${report.data}</p>
       <img src="cid:screenshot@bug-reporter.com" alt="Screenshot"/>
-      <p>Store redux : ${report.reduxStore ? report.reduxStore : '-'}</p>
     `,
     attachments: [{
       filename: 'screenshot.jpeg',

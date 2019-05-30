@@ -1,7 +1,5 @@
-import BugReporter from './BugReporter.js';
-import BugReporterRedux from './BugReporterRedux.js';
+import BugReporter from './BugReporter';
 
 export {
-	BugReporter,
-	BugReporterRedux
+  BugReporter
 };
